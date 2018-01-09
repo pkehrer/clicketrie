@@ -28,3 +28,12 @@ a.svg:after {
     bottom: 0; 
     left: 0;
   }
+
+  .nav {
+      border-top-width: 1px;
+      border-bottom-width: 1px;
+      border-right-width: 0;
+      border-left-width: 0;
+      border-style: solid;
+      border-image: lineargradient(to right, white, blue, );
+  }

@@ -5,6 +5,7 @@ import { BlogComponent } from './blog.component';
 import { N001IntroductionComponent } from './posts/n001-introduction/n001-introduction.component';
 import { PostDirective } from './post.directive';
 import { N002DyeingComponent } from './posts/n002-dyeing/n002-dyeing.component';
+import { ImageRowComponent } from './image-row/image-row.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { N002DyeingComponent } from './posts/n002-dyeing/n002-dyeing.component';
     BlogComponent,
     N001IntroductionComponent,
     PostDirective,
-    N002DyeingComponent
+    N002DyeingComponent,
+    ImageRowComponent
   ],
   exports: [BlogComponent],
   entryComponents: [

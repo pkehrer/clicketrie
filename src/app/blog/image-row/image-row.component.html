@@ -1,0 +1,5 @@
+<div class="row">
+  <div class="col" *ngFor="let image of images" [style.height.px]="heightPx">
+    <img #img [src]="'assets/img/' + image" />
+  </div>
+</div>

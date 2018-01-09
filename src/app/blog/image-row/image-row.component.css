@@ -1,0 +1,33 @@
+img {
+    width:100%;
+    display: block;
+    flex: 0 0 auto;
+}
+
+div.row {
+    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.col {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    padding:0px;
+    background-color: #341246;
+}
+
+.col:last-child {
+    margin-right: 15px;
+}
+
+.col:first-child {
+    margin-left: 15px;
+}
+.col:first-child img {
+    border-bottom-left-radius:10px;
+    border-top-left-radius:10px;
+}
+

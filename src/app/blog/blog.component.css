@@ -1,0 +1,12 @@
+:host > .row {
+    margin-top:25px;
+}
+
+.posts-list {
+    text-align: right;
+    position: relative
+}
+
+h4 {
+    color: gray;
+}
