@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BlogModule, BlogComponent } from './blog/blog.module';
 import { AboutComponent } from './about/about.component';
+import { LayoutBuilderComponent } from './layout-builder/layout-builder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    LayoutBuilderComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,10 @@ import { AboutComponent } from './about/about.component';
       {
         path: 'about',
         component: AboutComponent
+      },
+      {
+        path: 'layout-builder',
+        component: LayoutBuilderComponent
       }
     ])
   ],

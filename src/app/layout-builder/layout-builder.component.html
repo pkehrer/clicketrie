@@ -1,0 +1,5 @@
+<div class="kbrow" *ngFor="let row of layout.rows">
+  <div class="kbkey" *ngFor="let key of row.keys" [style.margin-left.px]="key.xoffset" [style.height.px]="key.heightPx()" [style.width.px]="key.widthPx()">
+    {{key.label}}
+  </div>
+</div>
