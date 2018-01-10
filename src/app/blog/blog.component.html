@@ -1,18 +1,19 @@
-<div class="row">
-  <div class="col-4">
-
-    <div class="posts-list" [style.margin-top.px]="postsListMargin" id="posts-list">
-      <h4>other posts</h4>
-      <dl>
-        <ng-container *ngFor="let post of posts">
-          <dt>{{post.title}}</dt>
-          <dd>{{post.description}}</dd>
-        </ng-container>
-      </dl>
+<div class="container">
+  <div class="row">
+    <div class="col-4" style="display: none">
+      <div class="posts-list" [style.margin-top.px]="postsListMargin" id="posts-list">
+        <h4>other posts</h4>
+        <dl>
+          <ng-container *ngFor="let post of posts">
+            <dt>{{post.title}}</dt>
+            <dd>{{post.description}}</dd>
+          </ng-container>
+        </dl>
+      </div>
     </div>
-  </div>
-  <div class="col-6">
-    <h1>{{post.title}}</h1>
-    <ng-template post></ng-template>
+    <div class="col-8 offset-2">
+      <h1>{{post.title}}</h1>
+      <ng-template post></ng-template>
+    </div>
   </div>
 </div>

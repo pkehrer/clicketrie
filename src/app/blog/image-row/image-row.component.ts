@@ -11,6 +11,9 @@ export class ImageRowComponent implements AfterViewInit {
   images: string[]
 
   @Input()
+  captions: string[]
+
+  @Input()
   heightPx: number = 100
 
   constructor() { }

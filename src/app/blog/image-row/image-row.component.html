@@ -1,5 +1,10 @@
-<div class="row">
+<div class="row images">
   <div class="col" *ngFor="let image of images" [style.height.px]="heightPx">
-    <img #img [src]="'assets/img/' + image" />
+    <img [src]="'assets/img/' + image" />
+  </div>
+</div>
+<div class="row captions">
+  <div class="col" *ngFor="let caption of captions" [style.height.px]="25">
+    <span class="caption">{{caption}}</span>
   </div>
 </div>

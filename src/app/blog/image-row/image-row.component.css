@@ -4,9 +4,18 @@ img {
     flex: 0 0 auto;
 }
 
-div.row {
+.images {
     overflow: hidden;
     margin-top: 20px;
+    margin-bottom: 20px;
+    margin-bottom: 0px;
+}
+
+.captions {
+    margin-top: 5px;
+    font-size: 14px;
+    color: gray;
+    font-style: italic;
     margin-bottom: 20px;
 }
 
@@ -14,9 +23,17 @@ div.row {
     display: flex;
     height: 100%;
     flex-direction: row;
-    align-items: center;
     padding:0px;
+    margin-left: 8px;
+}
+
+.col:first-child {
+    margin-left: 0px;
+}
+.images .col {
     background-color: #341246;
+    
+    align-items: center;
 }
 
 .col:last-child {
@@ -26,8 +43,5 @@ div.row {
 .col:first-child {
     margin-left: 15px;
 }
-.col:first-child img {
-    border-bottom-left-radius:10px;
-    border-top-left-radius:10px;
-}
+
 

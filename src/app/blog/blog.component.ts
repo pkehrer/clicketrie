@@ -17,7 +17,7 @@ interface Post {
 
 const posts: Post[] = [
   {
-    title: 'Introduction',
+    title: 'Diving in!',
     description: 'description',
     component: N001IntroductionComponent,
     id: 'intro'

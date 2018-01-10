@@ -1,18 +1,8 @@
-<div class="banner-content" style="display:none">
+<div class="banner-content">
   <div class="logo">
     <a [routerLink]="['']" class="svg">
       <object width="200" type="image/svg+xml" data="assets/img/logotitle.svg"></object>
     </a>
   </div>
 </div>
-<ul class="nav justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['about']">about</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['blog']">blog</a>
-  </li>
-</ul>
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>

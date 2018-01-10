@@ -22,14 +22,10 @@ import { LayoutBuilderComponent } from './layout-builder/layout-builder.componen
     RouterModule.forRoot([
       {
         path: "",
-        component: HomeComponent
-      },
-      {
-        path: "blog",
         component: BlogComponent
       },
       {
-        path: "blog/posts/:postid",
+        path: "posts/:postid",
         component: BlogComponent
       },
       {
@@ -37,7 +33,7 @@ import { LayoutBuilderComponent } from './layout-builder/layout-builder.componen
         component: AboutComponent
       },
       {
-        path: 'layout-builder',
+        path: 'layouts',
         component: LayoutBuilderComponent
       }
     ])
