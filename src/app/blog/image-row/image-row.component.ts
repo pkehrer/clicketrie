@@ -3,18 +3,15 @@ import * as _ from 'lodash'
 @Component({
   selector: 'image-row',
   templateUrl: './image-row.component.html',
-  styleUrls: ['./image-row.component.css']
+  styleUrls: ['./image-row.component.scss']
 })
 export class ImageRowComponent implements AfterViewInit {
 
   @Input()
-  images: string[]
+  data: { image: string, caption: string, link?: string }[]
 
   @Input()
-  captions: string[]
-
-  @Input()
-  heightPx: number = 100
+  heightPx: number = 250
 
   constructor() { }
 

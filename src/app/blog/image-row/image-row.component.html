@@ -1,10 +1,16 @@
 <div class="row images">
-  <div class="col" *ngFor="let image of images" [style.height.px]="heightPx">
-    <img [src]="'assets/img/' + image" />
-  </div>
-</div>
-<div class="row captions">
-  <div class="col" *ngFor="let caption of captions" [style.height.px]="25">
-    <span class="caption">{{caption}}</span>
+  <div class=" col-sm " *ngFor="let d of data ">
+    <div [style.height.px]="heightPx " class="image ">
+      <img [src]=" 'assets/img/' + d.image " />
+    </div>
+
+    <div class="caption ">{{d.caption}}
+      <span *ngIf="d.link">
+        (
+        <a [attr.href]="d.link" target="_blank">
+          link
+        </a>)
+      </span>
+    </div>
   </div>
 </div>
