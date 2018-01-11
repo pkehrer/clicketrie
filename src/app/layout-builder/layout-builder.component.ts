@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BoardLayout, BoardRow, BoardKey, BoardKeySet, KeySpacing } from './board-layout';
 import { TklLayout } from './layouts/tkl';
 import * as _ from 'lodash'
+import { KeyColorService } from './key-color.service';
 
 @Component({
   selector: 'layout-builder',
@@ -12,40 +13,7 @@ export class LayoutBuilderComponent {
 
   layout = TklLayout
 
-  defaultColor = '#4b4646'
-  colors = {
-    '#db4b4b': ['esc', '`', 'tab', 'caps', 'shift', 'ctrl', 'fn', 'menu', 'alt', 'Enter', '\\', 'bksp', 'f12', 'win'],
-    'teal': ['up', 'dn', 'lft', 'rgt']
-  }
-
-  defaultLabelColor = 'white'
-  labelColors = {
-    'black': ['esc', '`', 'tab', 'caps', 'shift', 'ctrl', 'fn', 'menu', 'alt', 'Enter', '\\', 'bksp', 'f12', 'win'],
-    'teal': ['up', 'dn', 'lft', 'rgt']
-  }
-
-  colorsByKey: { [keyLabel: string]: string }
-  labelColorsByKey: { [keyLabel: string]: string }
-
-  constructor() {
-    this.colorsByKey = {}
-    _.each(this.colors, (labels, color) => {
-      _.each(labels, label => this.colorsByKey[label] = color)
-    })
-
-    this.labelColorsByKey = {}
-    _.each(this.labelColors, (labels, color) => {
-      _.each(labels, label => this.labelColorsByKey[label] = color)
-    })
-  }
-
-  getColor(key: BoardKey) {
-    return this.colorsByKey[key.label] || this.defaultColor
-  }
-
-  getLabelColor(key: BoardKey) {
-    return this.labelColorsByKey[key.label] || this.defaultLabelColor
-  }
+  constructor(public keyColorSvc: KeyColorService) { }
 
   getRowOffset(row: BoardRow): number {
     if (row.yoffset) {
@@ -53,6 +21,7 @@ export class LayoutBuilderComponent {
     }
     return 0
   }
+
   getKeyOffset(key: BoardKey): number {
     if (key.xoffset) {
       return (this.layout.unitpx + 2 * KeySpacing) * key.xoffset + KeySpacing

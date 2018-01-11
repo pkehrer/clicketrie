@@ -20,6 +20,7 @@ export class BoardKeySet {
 }
 
 export class BoardKey {
+    public id: number
     public width: number = 1
     public height: number = 1
     public label: string
@@ -54,5 +55,10 @@ export class BoardRow {
 }
 
 export class BoardLayout {
-    constructor(public rows: BoardRow[], public unitpx: number) { }
+    constructor(public rows: BoardRow[], public unitpx: number) {
+        let id = 1
+        _.each(rows, r => {
+            _.each(r.keys, k => k.id = id++)
+        })
+    }
 }

@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { BlogModule, BlogComponent } from './blog/blog.module';
 import { AboutComponent } from './about/about.component';
 import { LayoutBuilderComponent } from './layout-builder/layout-builder.component';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { KeyColorService } from './layout-builder/key-color.service';
 
 @NgModule({
   declarations: [
@@ -36,9 +38,10 @@ import { LayoutBuilderComponent } from './layout-builder/layout-builder.componen
         path: 'layouts',
         component: LayoutBuilderComponent
       }
-    ])
+    ]),
+    ColorPickerModule
   ],
-  providers: [],
+  providers: [KeyColorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
