@@ -2,6 +2,10 @@
     margin-top:25px;
 }
 
+:host /deep/ p {
+    text-align: justify
+}
+
 .posts-list {
     text-align: right;
     position: relative
