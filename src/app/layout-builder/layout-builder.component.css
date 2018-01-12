@@ -1,28 +1,18 @@
-.kbrow {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: top;
-    margin: 0;
-    padding:0;
+.form-control {
+    width: 250px;
 }
 
-.board {
-    margin-left: auto;
-    margin-right: auto;
-    background-color: black;
-    padding: 10px;
-    width: 1130px;
+.col-form-label-sm {
+    text-align: right;
+}
+
+.editor {
+    border: 0.5px solid gray;
     border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
 }
 
-.kbkey {
-    flex: 0 0 auto;
-    font-weight: bold;
-    margin: 5px;
-    padding: 10px;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: white;
-    border-width: 1px;
+.ourlayouts {
+    margin-bottom: 200px;
 }

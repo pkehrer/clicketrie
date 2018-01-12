@@ -1,6 +1,6 @@
 import * as _ from 'lodash'
 
-export const KeySpacing = 5
+export const getKeySpacing = (unitpx: number) => unitpx / 12
 
 export class BoardKeySet {
     public width: number = 1
@@ -31,10 +31,11 @@ export class BoardKey {
     }
 
     public heightPx(unitpx: number): number {
-        return this.height * unitpx + (this.height - 1) * KeySpacing * 2
+
+        return this.height * unitpx + (this.height - 1) * getKeySpacing(unitpx) * 2
     }
     public widthPx(unitpx: number): number {
-        return this.width * unitpx + (this.width - 1) * KeySpacing * 2
+        return this.width * unitpx + (this.width - 1) * getKeySpacing(unitpx) * 2
     }
 }
 
@@ -55,7 +56,7 @@ export class BoardRow {
 }
 
 export class BoardLayout {
-    constructor(public rows: BoardRow[], public unitpx: number) {
+    constructor(public rows: BoardRow[]) {
         let id = 1
         _.each(rows, r => {
             _.each(r.keys, k => k.id = id++)

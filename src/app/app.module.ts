@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
+import { FormsModule } from '@angular/forms'
 
 
 import { AppComponent } from './app.component';
@@ -9,14 +10,16 @@ import { BlogModule, BlogComponent } from './blog/blog.module';
 import { AboutComponent } from './about/about.component';
 import { LayoutBuilderComponent } from './layout-builder/layout-builder.component';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { KeyColorService } from './layout-builder/key-color.service';
+import { BoardComponent } from './layout-builder/board/board.component';
+import { ColorLayoutService } from './layout-builder/color-layout.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    LayoutBuilderComponent
+    LayoutBuilderComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +42,10 @@ import { KeyColorService } from './layout-builder/key-color.service';
         component: LayoutBuilderComponent
       }
     ]),
-    ColorPickerModule
+    ColorPickerModule,
+    FormsModule
   ],
-  providers: [KeyColorService],
+  providers: [ColorLayoutService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

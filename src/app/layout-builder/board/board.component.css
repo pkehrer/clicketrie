@@ -1,0 +1,27 @@
+.kbrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: top;
+    margin: 0;
+    padding:0;
+}
+
+.board {
+    display: inline-block;
+}
+
+.kbkey {
+    flex: 0 0 auto;
+    font-weight: bold;
+    margin: 5px;
+
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+}
+
+.kblabel {
+    font-size:25px;
+    line-height: 0;
+}

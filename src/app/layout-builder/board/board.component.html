@@ -1,0 +1,32 @@
+<div>
+  <div class="board"
+       [style.padding.px]="unitpx / 8"
+       [style.border-radius.px]="unitpx / 5"
+       [style.background-color]="boardColor">
+
+    <div class="kbrow"
+         *ngFor="let row of layout.rows"
+         [style.margin-top.px]="getRowOffset(row)">
+
+      <div class="kbkey"
+           *ngFor="let key of row.keys"
+           [style.margin.px]="getDefaultOffset()"
+           [style.margin-left.px]="getKeyOffset(key)"
+           [style.height.px]="key.heightPx(unitpx)"
+           [style.width.px]="key.widthPx(unitpx)"
+           [style.background-color]="keyColor(key)"
+           [style.color]="labelColor(key)"
+           [style.border-radius.px]="unitpx / 13"
+           [style.border-width.px]="unitpx / 44"
+           (click)="onKeyClick(key)">
+
+        <div class="kblabel"
+             [style.margin-top.px]="unitpx / 4.5"
+             [style.margin-left.px]="unitpx / 8"
+             [style.font-size.px]="unitpx / 3.5">
+          {{key.label}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

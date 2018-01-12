@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardLayout, BoardRow, BoardKey, BoardKeySet, KeySpacing } from './board-layout';
-import { TklLayout } from './layouts/tkl';
+import { BoardLayout, BoardRow, BoardKey, BoardKeySet } from './board-layout';
+import * as BoardLayouts from './layouts/boards/all';
+import * as ColorLayouts from './layouts/colors/all'
 import * as _ from 'lodash'
-import { KeyColorService } from './key-color.service';
+import { ColorLayout } from './color-layout';
+import { ColorLayoutService } from './color-layout.service';
 
 @Component({
   selector: 'layout-builder',
@@ -11,21 +13,57 @@ import { KeyColorService } from './key-color.service';
 })
 export class LayoutBuilderComponent {
 
-  layout = TklLayout
+  paulLayout = BoardLayouts.Tkl
+  paulColors = ColorLayouts.Paul
+  kristenLayout = BoardLayouts.Tkl
+  kristenColors = ColorLayouts.Kristen
 
-  constructor(public keyColorSvc: KeyColorService) { }
+  layout = BoardLayouts.Tkl
 
-  getRowOffset(row: BoardRow): number {
-    if (row.yoffset) {
-      return row.yoffset * this.layout.unitpx
-    }
-    return 0
+  keyColor: string
+
+  boardSize: number = 49
+
+  colorLayout: ColorLayout = {
+    name: '',
+    keys: {},
+    labels: {}
   }
 
-  getKeyOffset(key: BoardKey): number {
-    if (key.xoffset) {
-      return (this.layout.unitpx + 2 * KeySpacing) * key.xoffset + KeySpacing
+  colorLayouts: ColorLayout[]
+
+  eyeDropperClicked = false
+
+  constructor(private colorSvc: ColorLayoutService) {
+    this.colorLayouts = this.colorSvc.getColorLayouts()
+
+    const firstLayout = _.first(this.colorLayouts)
+    if (firstLayout) {
+      this.colorLayout = firstLayout
     }
-    return KeySpacing
+
   }
+
+  onKeyClick(key: BoardKey) {
+    if (this.eyeDropperClicked) {
+      console.log(key.id)
+      this.eyeDropperClicked = false;
+      this.keyColor = this.colorLayout.keys[key.id]
+      return
+    }
+    this.colorLayout.keys[key.id] = this.keyColor
+  }
+
+  saveLayout() {
+    this.colorSvc.saveLayout(this.colorLayout)
+    this.colorLayouts = this.colorSvc.getColorLayouts()
+  }
+
+  setLayout(layout: ColorLayout) {
+    console.log(layout)
+    this.colorLayout = layout
+  }
+
+
+
 }

@@ -1,6 +1,6 @@
-import { BoardLayout, BoardKeySet, BoardRow, BoardKey } from "../board-layout";
+import { BoardLayout, BoardKeySet, BoardRow, BoardKey } from "../../board-layout";
 
-export const TklLayout = new BoardLayout(
+export const Tkl = new BoardLayout(
     [
         new BoardRow([
             new BoardKey({ label: 'esc' }),
@@ -37,5 +37,5 @@ export const TklLayout = new BoardLayout(
             new BoardKeySet({ width: 1.25, labels: ['alt', 'menu', 'fn', 'ctrl'] }),
             new BoardKeySet({ labels: ['lft', 'dn', 'rgt'], xoffset: 0.5 })
         ])
-    ], 50
+    ]
 )

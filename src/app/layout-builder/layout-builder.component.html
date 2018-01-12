@@ -1,15 +1,67 @@
-<input [(colorPicker)]="keyColorSvc.selectedKeyColor" [style.background]="keyColorSvc.selectedKeyColor" />
-<button class="btn" (click)="keyColorSvc.startGetKeyColor()">getcolor</button>
-<br/>
-<button class="btn" (click)="keyColorSvc.saveColors()">save</button>
-<button class="btn" (click)="keyColorSvc.loadColors()">load</button>
-<div class="board">
-  <h3 style="color:white">Paul's Board</h3>
-  <div class="kbrow" *ngFor="let row of layout.rows" [style.margin-top.px]="getRowOffset(row)">
-    <div class="kbkey" *ngFor="let key of row.keys" [style.margin-left.px]="getKeyOffset(key)" [style.height.px]="key.heightPx(layout.unitpx)"
-      [style.width.px]="key.widthPx(layout.unitpx)" [style.background-color]="keyColorSvc.getKeyColor(key)" [style.color]="keyColorSvc.getLabelColor(key)"
-      (click)="keyColorSvc.selectKey(key)">
-      {{key.label}}
+<div class="container">
+
+  <div class="editor">
+    <p>
+      <strong>key color editor</strong>
+    </p>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label-sm">Load Saved Layout:</label>
+      <div class="col-sm-4">
+        <select class="form-control"
+                [(ngModel)]="colorLayout">
+          <option *ngFor="let l of colorLayouts"
+                  [ngValue]="l">{{l.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label-sm">Color Layout Name:</label>
+      <div class="col-sm-10">
+        <input class="form-control form-control-sm"
+               [(ngModel)]="colorLayout.name" />
+      </div>
+      <label class="col-sm-2 col-form-label-sm">Select Key Color:</label>
+      <div class="col-sm-10">
+        <input [(colorPicker)]="keyColor"
+               [style.background]="keyColor"
+               class="form-control-sm form-control" />
+      </div>
+      <label class="col-sm-2 col-form-label-sm">Copy existing color:</label>
+      <div class="col-sm-10">
+        <button class="btn btn-sm"
+                [disabled]="eyeDropperClicked"
+                (click)="eyeDropperClicked = true">eyedropper</button>
+      </div>
+      <div class="col-sm-10 offset-sm-2">
+        <button class="btn btn-sm"
+                (click)="saveLayout()">save</button>
+      </div>
+    </div>
+    <board [layout]="layout"
+           [keyColors]="colorLayout.keys"
+           [unitpx]="boardSize"
+           boardColor="black"
+           (keyClick)="onKeyClick($event)">
+    </board>
+  </div>
+  <div class="row ourlayouts">
+    <div class="col">
+      <h3>Paul's Layout</h3>
+      <board [layout]="paulLayout"
+             [keyColors]="paulColors.keys"
+             unitpx="22"
+             boardColor="black">
+      </board>
+    </div>
+    <div class="col">
+      <h3>Kristen's Layout</h3>
+      <board [layout]="kristenLayout"
+             [keyColors]="kristenColors.keys"
+             unitpx="22"
+             defaultKeyColor="white"
+             boardColor="black">
+      </board>
     </div>
   </div>
 </div>
+<!--<pre>{{colorLayout|json}}</pre>-->
