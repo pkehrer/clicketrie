@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardLayout, BoardRow, BoardKey, BoardKeySet } from './board-layout';
-import * as BoardLayouts from './layouts/boards/all';
-import * as ColorLayouts from './layouts/colors/all'
+import { BoardLayout, BoardRow, BoardKey, BoardKeySet } from '../board-layout';
+import * as BoardLayouts from '../layouts/boards/all';
+import * as ColorLayouts from '../layouts/colors/all'
+import { ColorLayout } from '../color-layout';
+import { ColorLayoutService } from '../color-layout.service';
+
 import * as _ from 'lodash'
-import { ColorLayout } from './color-layout';
-import { ColorLayoutService } from './color-layout.service';
 
 @Component({
   selector: 'layout-builder',
@@ -46,12 +47,12 @@ export class LayoutBuilderComponent {
 
   onKeyClick(key: BoardKey) {
     if (this.eyeDropperClicked) {
-      console.log(key.id)
+      console.log(key.data.label)
       this.eyeDropperClicked = false;
-      this.keyColor = this.colorLayout.keys[key.id]
+      this.keyColor = this.colorLayout.keys[key.data.code]
       return
     }
-    this.colorLayout.keys[key.id] = this.keyColor
+    this.colorLayout.keys[key.data.code] = this.keyColor
   }
 
   saveLayout() {

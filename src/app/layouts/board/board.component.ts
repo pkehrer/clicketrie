@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
 import { BoardLayout, BoardRow, BoardKey, getKeySpacing } from '../board-layout';
 import * as _ from 'lodash'
 
@@ -10,31 +10,39 @@ import * as _ from 'lodash'
 export class BoardComponent implements OnInit {
 
   @Input() layout: BoardLayout
-  @Input() keyColors: { [id: number]: string }
-  @Input() labelColors: { [id: number]: string }
+  @Input() keyColors: { [code: string]: string } = {}
+  @Input() labelColors: { [code: string]: string } = {}
   @Input() defaultKeyColor = 'gray'
   @Input() defaultLabelColor = 'white'
-  @Input() boardColor = 'blue'
+  @Input() boardColor = 'black'
   @Input() unitpx: number = 75
 
+  @Output() mouseClick = new EventEmitter<BoardKey>()
   @Output() keyClick = new EventEmitter<BoardKey>()
 
   constructor() { }
+
+  @HostListener('window:keyup', ['$event']) onKeyUp(keyEvent: KeyboardEvent) {
+    console.log('key code:', keyEvent.code)
+    console.log('key on board:', _.get(this.layout.findKey(keyEvent.code), 'data.label'))
+  }
 
   ngOnInit() {
     this.unitpx = _.toNumber(this.unitpx)
   }
 
-  onKeyClick(key: BoardKey) {
-    this.keyClick.next(key)
+  onMouseClick(key: BoardKey) {
+
+
+    this.mouseClick.next(key)
   }
 
   keyColor(key: BoardKey): string {
-    return _.get(this.keyColors, key.id, this.defaultKeyColor)
+    return _.get(this.keyColors, key.data.code, this.defaultKeyColor)
   }
 
   labelColor(key: BoardKey): string {
-    return _.get(this.labelColors, key.id, this.defaultLabelColor)
+    return _.get(this.labelColors, key.data.code, this.defaultLabelColor)
   }
 
   getRowOffset(row: BoardRow): number {

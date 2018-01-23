@@ -2,10 +2,20 @@ import * as _ from 'lodash'
 
 export const getKeySpacing = (unitpx: number) => unitpx / 12
 
+export class BoardKeyData {
+    public label: string
+    public code: string
+
+    constructor(label: string, code: string) {
+        this.label = label
+        this.code = code
+    }
+}
+
 export class BoardKeySet {
     public width: number = 1
     public height: number = 1
-    public labels: string[]
+    public data: BoardKeyData[]
     public xoffset?: number
 
     constructor(init?: Partial<BoardKeySet>) {
@@ -13,17 +23,16 @@ export class BoardKeySet {
     }
 
     keys(): BoardKey[] {
-        const keys = _.map(this.labels, label => new BoardKey({ width: this.width, height: this.height, label: label }))
+        const keys = _.map(this.data, d => new BoardKey({ width: this.width, height: this.height, data: d }))
         keys[0].xoffset = this.xoffset
         return keys
     }
 }
 
 export class BoardKey {
-    public id: number
+    public data: BoardKeyData
     public width: number = 1
     public height: number = 1
-    public label: string
     public xoffset?: number
 
     constructor(init?: Partial<BoardKey>) {
@@ -61,5 +70,15 @@ export class BoardLayout {
         _.each(rows, r => {
             _.each(r.keys, k => k.id = id++)
         })
+    }
+
+    public findKey(code: string): BoardKey {
+        for (const row of this.rows) {
+            const key = _.find(row.keys, k => k.data.code === code)
+            if (key) {
+                return key
+            }
+        }
+        return undefined
     }
 }

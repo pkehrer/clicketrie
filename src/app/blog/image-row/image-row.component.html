@@ -1,13 +1,16 @@
 <div class="row images">
-  <div class=" col-sm " *ngFor="let d of data ">
-    <div [style.height.px]="heightPx " class="image ">
-      <img [src]=" 'assets/img/' + d.image " />
+  <div class=" col-sm "
+       *ngFor="let d of _data ">
+    <div [style.height.px]="heightPx "
+         class="image ">
+      <img [src]="d.image" />
     </div>
 
     <div class="caption ">{{d.caption}}
       <span *ngIf="d.link">
         (
-        <a [attr.href]="d.link" target="_blank">
+        <a [attr.href]="d.link"
+           target="_blank">
           link
         </a>)
       </span>

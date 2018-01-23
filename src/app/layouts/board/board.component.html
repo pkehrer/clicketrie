@@ -18,13 +18,13 @@
            [style.color]="labelColor(key)"
            [style.border-radius.px]="unitpx / 13"
            [style.border-width.px]="unitpx / 44"
-           (click)="onKeyClick(key)">
+           (click)="onMouseClick(key)">
 
         <div class="kblabel"
              [style.margin-top.px]="unitpx / 4.5"
              [style.margin-left.px]="unitpx / 8"
              [style.font-size.px]="unitpx / 3.5">
-          {{key.label}}
+          {{key.data.label}}
         </div>
       </div>
     </div>

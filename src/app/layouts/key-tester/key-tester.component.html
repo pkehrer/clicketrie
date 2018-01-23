@@ -1,0 +1,7 @@
+<div class="container">
+  <board [layout]="layout"
+         (mouseClick)="onMouseClick($event)"
+         (keyClick)="onKeyClick($event)"
+         unitpx="52"></board>
+  <span>Key presses: {{keyPressesString()}}</span>
+</div>

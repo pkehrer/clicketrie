@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BlogModule, BlogComponent } from './blog/blog.module';
 import { AboutComponent } from './about/about.component';
-import { LayoutBuilderComponent } from './layout-builder/layout-builder.component';
+import { LayoutBuilderComponent } from './layouts/layout-builder/layout-builder.component';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { BoardComponent } from './layout-builder/board/board.component';
-import { ColorLayoutService } from './layout-builder/color-layout.service';
+import { BoardComponent } from './layouts/board/board.component';
+import { ColorLayoutService } from './layouts/color-layout.service';
+import { KeyTesterComponent } from './layouts/key-tester/key-tester.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ColorLayoutService } from './layout-builder/color-layout.service';
     HomeComponent,
     AboutComponent,
     LayoutBuilderComponent,
-    BoardComponent
+    BoardComponent,
+    KeyTesterComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,10 @@ import { ColorLayoutService } from './layout-builder/color-layout.service';
       {
         path: 'layouts',
         component: LayoutBuilderComponent
+      },
+      {
+        path: 'tester',
+        component: KeyTesterComponent
       }
     ]),
     ColorPickerModule,

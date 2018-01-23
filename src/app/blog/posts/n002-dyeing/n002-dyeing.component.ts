@@ -12,4 +12,7 @@ export class N002DyeingComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  paulsBoard = [{ image: 'https://i.imgur.com/QXHW3C0.jpg', caption: 'This is what Paul\'s board looked like at the end of the day.' }]
+
 }
